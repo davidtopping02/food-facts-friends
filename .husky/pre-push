@@ -2,6 +2,13 @@
 
 branch="$(git symbolic-ref --short HEAD)"
 
+
+case "$branch" in
+  main*)
+    exit 0
+    ;;
+esac
+
 regex="^(feat|fix|chore|docs|refactor|test)\/[a-z0-9-]+$"
 
 if ! echo "$branch" | grep -Eq "$regex"; then
